@@ -1,0 +1,46 @@
+Great thinking! Here's how the folder structure should look:
+src
+└── com
+    └── uerTest
+        ├── Main.java
+        └── user
+            ├── User.java
+            ├── UserService.java
+            ├── UserController.java  ← NEW — handles menu and user input
+            └── StartApp.java
+
+Here's how each file's responsibility breaks down:
+User.java stays the same — just the model/blueprint, nothing changes.
+UserService.java stays the same — all your business logic and data operations live here, it knows nothing about the terminal or user input.
+UserController.java is the new file — this is where the terminal menu lives. It handles printing the menu, reading what the user types, and calling the appropriate method on UserService. Think of it as the middleman between the user and the service.
+StartApp.java becomes much simpler — it just creates a UserService, passes it into UserController, and calls a run() method to kick off the menu loop.
+Main.java stays the same — just calls StartApp.
+
+The communication flow would be:
+Main → StartApp → UserController → UserService → User
+
+This follows the same separation of concerns pattern
+you'd see in a real Spring application where you have:
+
+Controller — handles input/output
+Service — handles business logic
+Model — represents the data
+
+Does that structure make sense before we start writing the code?
+
+
+======================================================================
+
+
+18:01The first step is setting up the menu loop in UserController. Before writing any code, think about what it needs to do conceptually:
+It needs to keep running and showing the menu until the user decides to quit. In Java we do this with a while loop that keeps going until a condition is met — like the user typing 0 to exit.
+The loop needs to do three things on each iteration:
+
+Print the menu options to the terminal
+Read what the user types — Java uses a class called Scanner to read input from the terminal
+React to the input — call the right method on UserService based on what was selected
+
+So the very first step is setting up Scanner — 
+this is Java's built in class for reading terminal 
+input and is the equivalent of something like readline in Node.js:
+

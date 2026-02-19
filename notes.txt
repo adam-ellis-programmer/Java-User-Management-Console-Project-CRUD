@@ -1,0 +1,107 @@
+users.removeIf(u -> !u.getRole().equals("ADMIN")); // remove matching elements
+users.clear();                                       // remove everything
+users.contains(user);                               // check if element exists
+users.isEmpty();                                    // check if list is empty
+users.size();                                       // get number of elements
+users.add(user);                                    // add element
+users.remove(user);                                 // remove specific element
+
+
+The difference between removeIf and using a stream is that removeIf 
+modifies the original list directly, whereas streams create a new 
+list and leave the original untouched:
+
+
+Every time you use a stream pipeline ending with .collect() 
+it always produces a brand new list and never touches the original:
+
+=========================================================================
+Method Reference:
+
+The :: syntax is Java's method reference operator and you'll see it used 
+in a few ways:
+
+-- javaUser::getAge        // instance method on the object in the stream
+-- System.out::println // instance method on a specific object
+-- Integer::sum        // static method on a class
+
+.map(u -> u.getAge())  // u is the current object
+.map(User::getAge)     // User is the class — Java works out the rest
+
+
+=========================================================================
+Hash Map
+A HashMap is Java's equivalent of a JavaScript object or dictionary — 
+it stores key/value pairs. There are a few Map types in Java:
+
+=========================================================================
+
+scanner.nextLine() is saying — read everything the user types until they hit Enter,
+and return it as a String.
+
+=========================================================================
+
+Here's what's actually happening step by step:
+while (running) {           // 1. loop starts, running = true
+    printMenu()             // 2. menu prints
+    scanner.nextLine()      // 3. waits for input, user presses 1
+    
+    switch(input) {         // 4. switch starts
+        case "1":
+            addUser()       // 5. addUser runs, new user created
+            break           // 6. breaks out of the SWITCH not the while loop
+    }
+                            // 7. switch is done, while loop continues...
+    
+    printMenu()             // 8. back to top of while — menu prints again!
+    scanner.nextLine()      // 9. waits for input again
+}
+
+=========================================================================
+
+Scanner has a few different read methods depending on what type of data you expect:
+javascanner.nextLine()   // reads a whole line as a String — most common
+scanner.nextInt()    // reads a whole number
+
+scanner.nextDouble() // reads a decimal number
+scanner.next()       // reads a single word (stops at a space)
+
+=========================================================================
+
+put is the method you use to add or update a key/value pair in a Map. Here are all the common Map methods:
+javaMap<String, Object> map = new HashMap<>();
+
+// PUT — adds a new entry OR overwrites if key already exists
+map.put("name", "Alice");
+map.put("name", "Alice Updated"); // overwrites the previous "name"
+
+// GET — retrieve a value by key
+map.get("name"); // returns "Alice Updated"
+
+// REMOVE — delete an entry by key
+map.remove("name");
+
+// CONTAINS KEY — check if a key exists
+map.containsKey("name"); // returns true or false
+
+// CONTAINS VALUE — check if a value exists
+map.containsValue("Alice"); // returns true or false
+
+// IS EMPTY — check if map has no entries
+map.isEmpty(); // returns true or false
+
+// SIZE — how many entries
+map.size(); // returns number of entries
+
+// CLEAR — remove everything
+map.clear();
+
+
+The reason it's called put rather than add is because you're putting something 
+at a specific key — like putting something in a labelled box. If the box already 
+has something in it, put replaces it. Does that make sense?
+
+
+=========================================================================
+
+
