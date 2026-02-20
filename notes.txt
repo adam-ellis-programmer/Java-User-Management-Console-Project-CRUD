@@ -105,3 +105,12 @@ has something in it, put replaces it. Does that make sense?
 =========================================================================
 
 
+while (true) {}
+
+It's actually a very common Java 
+pattern when you need to keep asking until 
+you get a valid response and the number of retries 
+is unknown — you can't write a meaningful 
+condition upfront so while(true) 
+with explicit return statements 
+is the cleanest approach.

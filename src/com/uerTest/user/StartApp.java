@@ -7,3 +7,9 @@ public class StartApp {
         userController.run();
     }
 }
+
+/**
+ * UserController now holds a reference to the same UserService instance. This
+ * is important — we're not creating a second UserService, we're passing the
+ * existing one in so they both share the same data.
+ */
